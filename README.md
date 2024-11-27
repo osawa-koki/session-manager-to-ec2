@@ -2,6 +2,8 @@
 
 🍢🍢🍢 Session Managerを使ってEC2に接続してみる！  
 
+![成果物](./fruit.gif)  
+
 ## 実行方法
 
 `.env.example`をコピーして`.env`ファイルを作成します。  
