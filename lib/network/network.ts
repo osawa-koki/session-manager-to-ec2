@@ -23,6 +23,11 @@ export default class NetworkStack extends cdk.Stack {
       subnetConfiguration: [
         {
           cidrMask: 24,
+          name: 'public-subnet',
+          subnetType: ec2.SubnetType.PUBLIC,
+        },
+        {
+          cidrMask: 24,
           name: 'private-with-egress-subnet',
           subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
         },
