@@ -17,15 +17,18 @@ export default class NetworkStack extends cdk.Stack {
       stackName,
     });
 
-    this.vpc = new ec2.Vpc(this, 'MyVpc', {
+    const vpc = new ec2.Vpc(this, 'MyVpc', {
       maxAzs: 2,
+      natGateways: 1,
       subnetConfiguration: [
         {
           cidrMask: 24,
-          name: 'private-subnet',
-          subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+          name: 'private-with-egress-subnet',
+          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
         },
       ],
     });
+
+    this.vpc = vpc;
   }
 }
