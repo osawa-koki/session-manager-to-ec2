@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 
 import NetworkStack from './network/network';
 import ComputeStack from './compute/compute';
+import OutputStack from './output/output';
 
 export class IndexStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -20,5 +21,10 @@ export class IndexStack extends cdk.Stack {
       vpc: networkStack.vpc,
     });
     computeStack.addDependency(networkStack);
+
+    new OutputStack(this, 'OutputStack', {
+      stackName: `${process.env.BASE_STACK_NAME!}-output`,
+      instance: computeStack.instance,
+    });
   }
 }
